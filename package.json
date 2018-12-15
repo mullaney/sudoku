@@ -7,7 +7,7 @@
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit",
-    "test:watch": "vue-cli-service test:unit --watch"
+    "watch": "vue-cli-service test:unit --watch"
   },
   "dependencies": {
     "vue": "^2.5.17",

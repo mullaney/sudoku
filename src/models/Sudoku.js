@@ -42,6 +42,43 @@ class Sudoku {
       throw "Invalid grid size";
     }
   }
+
+  static includes1to9(section) {
+    if (!Array.isArray(section)) {
+      throw "Type error: you must pass an array";
+    }
+    if (section.length !== 9) {
+      throw "Error: you must pass an array of size 9";
+    }
+
+    const uniqueValues = new Set();
+
+    for (let i = 0; i < 9; i++) {
+      if (!Sudoku.isValidValue(section[i]) && section[i] !== null) {
+        throw `Error: invalid number in this section: ${
+          section[i]
+        } is not valid. Only values 1 to 9 or null are valid`;
+      } else if (section[i] === null) {
+        return false;
+      } else if (uniqueValues.has(section[i])) {
+        throw "Error: duplicate value in section";
+      } else {
+        uniqueValues.add(section[i]);
+      }
+    }
+
+    return true;
+  }
+
+  static isValidValue(num) {
+    if (num < 1 || num > 9) {
+      return false;
+    }
+    if (!Number.isInteger(num)) {
+      return false;
+    }
+    return true;
+  }
 }
 
 export default Sudoku;
