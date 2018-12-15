@@ -37,6 +37,21 @@ class Sudoku {
     return section;
   }
 
+  isSolved() {
+    for (let i = 0; i < 9; i++) {
+      if (!Sudoku.includes1to9(this.getRow(i))) {
+        return false;
+      }
+      if (!Sudoku.includes1to9(this.getColumn(i))) {
+        return false;
+      }
+      if (!Sudoku.includes1to9(this.getSection(i))) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   validate(grid) {
     if (grid.length !== GRID_SIZE) {
       throw "Invalid grid size";

@@ -162,9 +162,24 @@ describe("Class sudoku", () => {
   });
 
   describe(".isSolved", () => {
-    // it("", () => {
-    //   expect(sudoku.)
-    // });
+    it("is a function", () => {
+      expect(sudoku.isSolved).toBeInstanceOf(Function);
+    });
+
+    describe("when sudoku grid is complete", () => {
+      it("should return true", () => {
+        expect(sudoku.isSolved()).toEqual(true);
+      });
+    });
+
+    describe("sudoku grid is incomplete", () => {
+      it("should return false", () => {
+        let incompleteGrid = [...testGrid];
+        incompleteGrid[0] = null;
+        let incompleteSudoku = new Sudoku(incompleteGrid);
+        expect(incompleteSudoku.isSolved()).toEqual(false);
+      });
+    });
   });
 });
 
